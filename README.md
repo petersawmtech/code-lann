@@ -14,3 +14,13 @@ This contains everything you need to run your app locally.
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+
+### 🌐 Connect with me
+
+- 💼 [LinkedIn](https://www.linkedin.com/in/peter-sawm-06932b254/)
+- 💻 [GitHub](https://github.com/petersawm)
+- 🌍 [Facebook](https://www.facebook.com/petersawm25)
+
+---
+
+Made with ❤️ by Peter Sawm
