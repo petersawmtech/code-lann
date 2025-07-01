@@ -18,7 +18,7 @@ This contains everything you need to run your app locally.
 ### 🌐 Connect with me
 
 - 💼 [LinkedIn](https://www.linkedin.com/in/peter-sawm-06932b254/)
-- 💻 [GitHub](https://github.com/petersawm)
+- 💻 [GitHub](https://github.com/petersawmtech)
 - 🌍 [Facebook](https://www.facebook.com/petersawm25)
 
 ---
