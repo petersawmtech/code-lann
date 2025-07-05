@@ -7,6 +7,18 @@ This contains everything you need to run your app locally.
     <img src="Screenshot_1.png" width="800px" height="450px" alt="database">
 </div>
 
+<div>
+    <img src="Screenshot_2.png" width="800px" height="450px" alt="database">
+</div>
+
+<div>
+    <img src="Screenshot_3.png" width="800px" height="450px" alt="database">
+</div>
+
+<div>
+    <img src="Screenshot_4.png" width="800px" height="450px" alt="database">
+</div>
+
 ## Run Locally
 
 **Prerequisites:**  Node.js
