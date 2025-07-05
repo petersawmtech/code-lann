@@ -131,3 +131,5 @@ const AIPlanner: React.FC<AIPlannerProps> = ({ onPlanGenerated, resources }) => 
 };
 
 export default AIPlanner;
+
+
