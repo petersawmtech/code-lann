@@ -3,6 +3,9 @@
 သင်၏ coding ခရီးလမ်းအတွက် အကောင်းဆုံး ပလက်ဖောင်း။ ဝဘ်ဖွံ့ဖြိုးတိုးတက်ရေး၊ ဒေတာသိပ္ပံနှင့် အခြားအရာများအတွက် အကောင်းဆုံးသင်တန်းများကို ရှာဖွေပြီး သင်၏တိုးတက်မှုကို ခြေရာခံပါ။
 
 This contains everything you need to run your app locally.
+<div>
+    <img src="Screenshot_1.png" width="800px" height="450px" alt="database">
+</div>
 
 ## Run Locally
 
