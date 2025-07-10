@@ -25,7 +25,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         try {
             const session = localStorage.getItem(CURRENT_USER_KEY);
             return session ? JSON.parse(session) : null;
-        } catch {
+        } catch (e) {
+            console.error('Failed to parse session from localStorage', e);
             return null;
         }
     });
@@ -33,16 +34,25 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     useEffect(() => {
         if (currentUser) {
-            localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(currentUser));
+            try {
+                localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(currentUser));
+            } catch (e) {
+                console.error('Failed to save session to localStorage', e);
+            }
             try {
                 const progressKey = `${PROGRESS_PREFIX}${currentUser.email}`;
                 const savedProgress = localStorage.getItem(progressKey);
                 setProgress(savedProgress ? JSON.parse(savedProgress) : {});
-            } catch {
+            } catch (e) {
+                console.error('Failed to load progress from localStorage', e);
                 setProgress({});
             }
         } else {
-            localStorage.removeItem(CURRENT_USER_KEY);
+            try {
+                localStorage.removeItem(CURRENT_USER_KEY);
+            } catch (e) {
+                console.error('Failed to remove session from localStorage', e);
+            }
             setProgress({});
         }
     }, [currentUser]);
@@ -85,7 +95,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             throw new Error('စကားဝှက်သည် အနည်းဆုံး စာလုံး ၆ လုံး ရှိရပါမည်။');
         }
 
-        const db: StoredUser[] = JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
+        let db: StoredUser[] = [];
+        try {
+            db = JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
+        } catch (e) {
+            console.error('Failed to load users from localStorage', e);
+        }
         const userExists = db.some(user => user.email.toLowerCase() === email.toLowerCase());
 
         if (userExists) {
@@ -94,7 +109,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
         const newUser: StoredUser = { email, password_plaintext };
         db.push(newUser);
-        localStorage.setItem(USERS_KEY, JSON.stringify(db));
+        try {
+            localStorage.setItem(USERS_KEY, JSON.stringify(db));
+        } catch (e) {
+            console.error('Failed to save users to localStorage', e);
+        }
 
         await notifyAdminOfNewSignup(email);
 
@@ -102,7 +121,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
 
     const login = async (email: string, password_plaintext: string): Promise<void> => {
-        const db: StoredUser[] = JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
+        let db: StoredUser[] = [];
+        try {
+            db = JSON.parse(localStorage.getItem(USERS_KEY) || '[]');
+        } catch (e) {
+            console.error('Failed to load users from localStorage', e);
+        }
         const user = db.find(u => u.email.toLowerCase() === email.toLowerCase());
 
         if (!user || user.password_plaintext !== password_plaintext) {
